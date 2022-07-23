@@ -1,29 +1,29 @@
 import { useSelector } from "react-redux";
+import CartItem from "./cartList";
 
 const CartContainer = () => {
 
     const {cartItems, total, amount} = useSelector((state) => state.cart);
 
-    const cartList = cartItems.map(({id, title, img, price}) => {
+    const cartList = cartItems.map((item) => {
         return (
-            <div key={id}>
-                <div>
-                    <img style={{width: '100px'}} src={img} />
-                </div>
-                <div>
-                    <div>{title}</div>
-                    <div>{price}</div>
-                </div>
-        </div>
+            <CartItem key={item.id} {...item} />
         )})
 
 
     return(
-        <section>
+        <section className="cart">
                 <header>
                     <h2>Your Bag</h2>
                     {amount < 1 ? <h4 className="empty-cart">is currently empty</h4> : cartList}
                 </header>
+                <footer>
+                    <hr />
+                    <div className="cart-total">
+                        <h4>Total <span>${total}</span></h4>
+                    </div>
+                    <button className="btn clear-btn">Clear Cart</button>
+                </footer>
         </section>
     )
         
