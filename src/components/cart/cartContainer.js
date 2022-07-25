@@ -1,11 +1,19 @@
 import { useSelector, useDispatch } from "react-redux";
 import CartItem from "./cartItem";
-import { clearCart } from "../../features/cart/cartSlice";
+import { clearCart, calculateTotal, calculateAmount } from "../../features/cart/cartSlice";
+import { useEffect } from "react";
+import {Outlet} from 'react-router-dom';
 
 const CartContainer = () => {
 
+
     const {cartItems, total, amount} = useSelector((state) => state.cart);
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(calculateAmount());
+        dispatch(calculateTotal());
+    }, [amount])
 
     const cartList = cartItems.map((item) => {
         return (
@@ -25,7 +33,7 @@ const CartContainer = () => {
                 <footer>
                     <hr />
                     <div className="cart-total">
-                        <h4>Total <span>${total}</span></h4>
+                        <h4>Total items {amount} <span>${total}</span></h4>
                     </div>
                     <button onClick={handleClearCart} className="btn clear-btn">Clear Cart</button>
                 </footer>
