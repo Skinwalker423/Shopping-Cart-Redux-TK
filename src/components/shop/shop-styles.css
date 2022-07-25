@@ -1,6 +1,27 @@
 .shop-container{
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    height: 80vh;
+    height: 100%;
+    margin-top: 5%;
+
 }
+
+.card-item{
+    background-color: white;
+    border-radius: 5%;
+    padding: 20px;
+    border: 1px solid #645cff;
+    position: relative;
+    transition: top ease 0.5s;
+    
+}
+
+.card-item:hover{
+    top: -10px
+}
+
+/* .products-container{
+    display: flex;
+    flex-direction: row;
+} */

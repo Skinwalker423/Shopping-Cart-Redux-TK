@@ -2,7 +2,6 @@ import { useSelector, useDispatch } from "react-redux";
 import CartItem from "./cartItem";
 import { clearCart, calculateTotal, calculateAmount } from "../../features/cart/cartSlice";
 import { useEffect } from "react";
-import {Outlet} from 'react-router-dom';
 
 const CartContainer = () => {
 
@@ -13,7 +12,7 @@ const CartContainer = () => {
     useEffect(() => {
         dispatch(calculateAmount());
         dispatch(calculateTotal());
-    }, [amount])
+    }, [amount, dispatch])
 
     const cartList = cartItems.map((item) => {
         return (
