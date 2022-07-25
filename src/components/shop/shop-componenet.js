@@ -1,17 +1,16 @@
 import './shop-styles.css';
-import { useSelector } from 'react-redux';
 import { Card, Button, Container } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
-import { incrementAmount, calculateAmount, calculateTotal } from '../../features/cart/cartSlice';
+import { calculateAmount, calculateTotal, toggleAmount } from '../../features/cart/cartSlice';
+import cartItems from '../../cartItems';
 
 const Shop = () => {
 
-    const {cartItems} = useSelector((state) => state.cart);
     const dispatch = useDispatch();
 
     const handleAddItem = (id) => {
         console.log('item added');
-        dispatch(incrementAmount(id));
+        dispatch(toggleAmount({id, increase: true}));
         dispatch(calculateAmount());
         dispatch(calculateTotal());
     }

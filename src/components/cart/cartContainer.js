@@ -12,9 +12,13 @@ const CartContainer = () => {
     useEffect(() => {
         dispatch(calculateAmount());
         dispatch(calculateTotal());
-    }, [amount, dispatch])
+    }, [amount, dispatch,])
 
     const cartList = cartItems.map((item) => {
+        if(item.amount > 0) {
+            return null;
+        };
+
         return (
             <CartItem key={item.id} {...item} />
         )})

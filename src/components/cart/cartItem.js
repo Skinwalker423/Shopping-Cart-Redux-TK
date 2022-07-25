@@ -1,5 +1,5 @@
 import { ChevronDown, ChevronUp } from "../../icons";
-import { incrementAmount, decrementAmount, removeItem, calculateTotal, calculateAmount } from "../../features/cart/cartSlice";
+import { removeItem, calculateTotal, calculateAmount, toggleAmount } from "../../features/cart/cartSlice";
 import { useDispatch } from "react-redux";
 
 const CartItem = ({img, title, price, amount, id}) => {
@@ -12,17 +12,12 @@ const CartItem = ({img, title, price, amount, id}) => {
         dispatch(calculateAmount());
     }
     
-    const handleIncrement = (id) => {
-        dispatch(incrementAmount(id));
+    const handleToggle = (id, bool) => {
+        dispatch(toggleAmount({id, increase: bool}));
         dispatch(calculateTotal());
         dispatch(calculateAmount());
     }
 
-    const handleDecrement = () => {
-        dispatch(decrementAmount(id));
-        dispatch(calculateTotal());
-        dispatch(calculateAmount());
-    }
 
     return(
         <article className="cart-item">
@@ -36,10 +31,12 @@ const CartItem = ({img, title, price, amount, id}) => {
             </div>
             <div>
                 <button onClick={() => {
-                    handleIncrement(id);
+                    handleToggle(id, true);
                 }} className="amount-btn"><ChevronUp /></button>
                 <p className="amount">{amount}</p>
-                 <button onClick={handleDecrement} className="amount-btn"><ChevronDown /></button>
+                 <button onClick={() => {
+                    handleToggle(id, false)
+                 }} className="amount-btn"><ChevronDown /></button>
             </div>
         </article>
     )        
