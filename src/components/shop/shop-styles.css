@@ -8,17 +8,21 @@
 }
 
 .card-item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     background-color: white;
     border-radius: 5%;
     padding: 20px;
     border: 1px solid #645cff;
-    position: relative;
     transition: top ease 0.5s;
     
 }
 
 .card-item:hover{
-    top: -10px
+    transform: scale(1.1);
+    
 }
 
 /* .products-container{

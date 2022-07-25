@@ -1,10 +1,20 @@
 import './shop-styles.css';
 import { useSelector } from 'react-redux';
 import { Card, Button, Container } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
+import { incrementAmount, calculateAmount, calculateTotal } from '../../features/cart/cartSlice';
 
 const Shop = () => {
 
     const {cartItems} = useSelector((state) => state.cart);
+    const dispatch = useDispatch();
+
+    const handleAddItem = (id) => {
+        console.log('item added');
+        dispatch(incrementAmount(id));
+        dispatch(calculateAmount());
+        dispatch(calculateTotal());
+    }
 
     const productsList = cartItems.map(({title, id, price, img}) => {
         return (
@@ -16,8 +26,8 @@ const Shop = () => {
                     Some quick example text to build on the card title and make up the
                     bulk of the card's content.
                     </Card.Text>
-                    <Card.Footer>Price: ${price}</Card.Footer>
-                    <Button variant="primary">Add Item</Button>
+                    <Card.Subtitle>Price: ${price}</Card.Subtitle>
+                    <Button onClick={() => handleAddItem(id)} className='w-100 mt-3' variant="primary">Add Item</Button>
                 </Card.Body>
             </Card>
         )
