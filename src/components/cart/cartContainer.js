@@ -15,7 +15,7 @@ const CartContainer = () => {
     }, [amount, dispatch,])
 
     const cartList = cartItems.map((item) => {
-        if(item.amount > 0) {
+        if(item.amount < 1) {
             return null;
         };
 
