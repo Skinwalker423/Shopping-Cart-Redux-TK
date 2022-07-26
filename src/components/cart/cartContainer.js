@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import CartItem from "./cartItem";
-import { clearCart, calculateTotal, calculateAmount } from "../../features/cart/cartSlice";
+import { clearCart, calculateTotal } from "../../features/cart/cartSlice";
 import { useEffect } from "react";
 
 const CartContainer = () => {
@@ -10,9 +10,8 @@ const CartContainer = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(calculateAmount());
         dispatch(calculateTotal());
-    }, [amount, dispatch,])
+    }, [cartItems, dispatch,])
 
     const cartList = cartItems.map((item) => {
         if(item.amount < 1) {

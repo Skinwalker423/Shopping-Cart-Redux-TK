@@ -1,17 +1,18 @@
 import './shop-styles.css';
 import { Card, Button, Container } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
-import { calculateAmount, calculateTotal, toggleAmount } from '../../features/cart/cartSlice';
+import { calculateTotal, toggleAmount } from '../../features/cart/cartSlice';
 import cartItems from '../../cartItems';
+import { triggerPopup } from '../../features/modal/ModalSlice';
 
 const Shop = () => {
 
     const dispatch = useDispatch();
 
+
     const handleAddItem = (id) => {
         console.log('item added');
         dispatch(toggleAmount({id, increase: true}));
-        dispatch(calculateAmount());
         dispatch(calculateTotal());
     }
 
@@ -27,6 +28,7 @@ const Shop = () => {
                     </Card.Text>
                     <Card.Subtitle>Price: ${price}</Card.Subtitle>
                     <Button onClick={() => handleAddItem(id)} className='w-100 mt-3' variant="primary">Add Item</Button>
+                    <Button onClick={() => dispatch(triggerPopup())} className='w-100 mt-3' variant="danger">popup</Button>
                 </Card.Body>
             </Card>
         )
