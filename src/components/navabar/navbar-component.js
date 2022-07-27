@@ -10,7 +10,7 @@ const NavBar = () => {
         <>
         <nav>
             <div className="nav-center">
-                <Link to={'/'}><h1>NavBar</h1></Link>
+                <Link className="nav-title" to={'/'}><h1>NavBar</h1></Link>
                 <BadgeCheck />
                 <div className='nav-container'>
                     <Link to={'/checkout'}><CartIcon /></Link>

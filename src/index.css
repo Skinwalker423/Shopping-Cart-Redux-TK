@@ -308,3 +308,8 @@ hr {
   display: flex;
   justify-content: space-around;
 }
+
+.nav-title{
+  color: white;
+  text-decoration: none;
+}

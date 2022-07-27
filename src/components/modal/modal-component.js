@@ -23,16 +23,16 @@ const PopUpModal = () => {
     return (
         <Modal show={show} onHide={handleOnClose} size='lg'>
             <Modal.Header  closeButton>
-                <Modal.Title>Modal title</Modal.Title>
+                <Modal.Title></Modal.Title>
             </Modal.Header>
 
             <Modal.Body>
-                <p>Are you sure you want to clear the cart?</p>
+                <h4>Are you sure you want to clear the cart?</h4>
             </Modal.Body>
 
             <Modal.Footer>
                 <Button onClick={handleClearCart} variant="success">Confirm</Button>
-                <Button variant="danger">Cancel</Button>
+                <Button onClick={handleOnClose} variant="danger">Cancel</Button>
             </Modal.Footer>
         </Modal>
     )

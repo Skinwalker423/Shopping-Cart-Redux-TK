@@ -3,7 +3,6 @@ import { Card, Button, Container } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { calculateTotal, toggleAmount } from '../../features/cart/cartSlice';
 import cartItems from '../../cartItems';
-import { triggerPopup } from '../../features/modal/ModalSlice';
 
 const Shop = () => {
 
