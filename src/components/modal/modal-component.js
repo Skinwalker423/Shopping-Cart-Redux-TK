@@ -31,8 +31,8 @@ const PopUpModal = () => {
             </Modal.Body>
 
             <Modal.Footer>
-                <Button onClick={handleClearCart} variant="success">Confirm</Button>
-                <Button onClick={handleOnClose} variant="danger">Cancel</Button>
+                <Button onClick={handleClearCart} variant="outline-success">Confirm</Button>
+                <Button onClick={handleOnClose} variant="outline-danger">Cancel</Button>
             </Modal.Footer>
         </Modal>
     )

@@ -3,6 +3,7 @@ import CartItem from "./cartItem";
 import { calculateTotal } from "../../features/cart/cartSlice";
 import { triggerPopup } from "../../features/modal/ModalSlice";
 import { useEffect } from "react";
+import { Button } from "react-bootstrap";
 
 const CartContainer = () => {
 
@@ -39,7 +40,7 @@ const CartContainer = () => {
                     <div className="cart-total">
                         <h4>Total items {amount} <span>${total}</span></h4>
                     </div>
-                    <button onClick={handleModal} className="btn clear-btn">Clear Cart</button>
+                    <Button onClick={handleModal} variant='outline-danger' className="mt-5">Clear Cart</Button>
                 </footer>
         </section>
     )

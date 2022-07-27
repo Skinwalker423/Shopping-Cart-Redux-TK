@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 
+
 const initialState = {
     show: false,
     
@@ -10,10 +11,10 @@ const modalSlice = createSlice({
     name: 'modal',
     initialState,
     reducers: {
-        triggerPopup: (state, action) => {
+        triggerPopup: (state) => {
             state.show = true;
         },
-        closePopup: (state, action) => {
+        closePopup: (state) => {
             state.show = false;
         }
     }
