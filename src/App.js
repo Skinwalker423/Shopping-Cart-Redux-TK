@@ -23,7 +23,7 @@ function App() {
 
   return (
     <Container>
-      <PopUpModal />
+    <PopUpModal />
       <Routes>
         <Route exact path="/" element={<NavBar />}>
             <Route index element={<Shop />} />

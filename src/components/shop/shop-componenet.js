@@ -28,7 +28,6 @@ const Shop = () => {
                     </Card.Text>
                     <Card.Subtitle>Price: ${price}</Card.Subtitle>
                     <Button onClick={() => handleAddItem(id)} className='w-100 mt-3' variant="primary">Add Item</Button>
-                    <Button onClick={() => dispatch(triggerPopup())} className='w-100 mt-3' variant="danger">popup</Button>
                 </Card.Body>
             </Card>
         )

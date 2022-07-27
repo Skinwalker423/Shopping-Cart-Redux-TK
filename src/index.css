@@ -285,12 +285,13 @@ hr {
   display: flex;
   align-items: center;
   justify-content: center;
+
 }
 
 .modal {
-  background: var(--clr-white);
+  background: rgba(0, 0, 0, 0.5);
   width: 80vw;
-  max-width: 400px;
+  max-width: 100%;
   border-radius: var(--radius);
   padding: 2rem 1rem;
   text-align: center;
