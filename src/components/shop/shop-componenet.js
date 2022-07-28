@@ -1,21 +1,29 @@
 import './shop-styles.css';
 import { Card, Button, Container } from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { calculateTotal, toggleAmount } from '../../features/cart/cartSlice';
-import cartItems from '../../cartItems';
 
 const Shop = () => {
 
+    const {productsItems, isLoading, cartItems} = useSelector((state) => state.cart);
     const dispatch = useDispatch();
 
-
+    console.log(productsItems);
+    console.log(cartItems);
     const handleAddItem = (id) => {
         console.log('item added');
         dispatch(toggleAmount({id, increase: true}));
         dispatch(calculateTotal());
     }
 
-    const productsList = cartItems.map(({title, id, price, img}) => {
+    if(isLoading || !productsItems) {
+        return (
+            <div>Loading...</div>
+        )
+    }
+
+
+    const productsList = productsItems.map(({title, id, price, img}) => {
         return (
             <Card className='card-item' style={{ width: '18rem' }} key={id}>
                 <Card.Img variant="top" src={img} />

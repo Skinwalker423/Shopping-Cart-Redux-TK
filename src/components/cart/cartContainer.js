@@ -14,7 +14,7 @@ const CartContainer = () => {
 
     useEffect(() => {
         dispatch(calculateTotal());
-    }, [cartItems, dispatch,])
+    }, [cartItems, dispatch])
 
     const cartList = cartItems.map((item) => {
         if(item.amount < 1) {
