@@ -72,7 +72,6 @@ const cartSlice = createSlice({
             state.cartItems = action.payload;
             state.productsItems = action.payload;
             console.log('success');
-            console.log(action);
         },
         [getCartItems.rejected]: (state, action) => {
             state.isLoading = false;

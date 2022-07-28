@@ -1,5 +1,5 @@
 import { ChevronDown, ChevronUp } from "../../icons";
-import { removeItem, calculateTotal, toggleAmount } from "../../features/cart/cartSlice";
+import { removeItem, toggleAmount } from "../../features/cart/cartSlice";
 import { useDispatch } from "react-redux";
 
 const CartItem = ({img, title, price, amount, id}) => {
@@ -8,12 +8,10 @@ const CartItem = ({img, title, price, amount, id}) => {
 
     const handleRemove = (id) => {
         dispatch(removeItem(id));
-        dispatch(calculateTotal());
     }
     
     const handleToggle = (id, bool) => {
         dispatch(toggleAmount({id, increase: bool}));
-        dispatch(calculateTotal());
     }
 
 

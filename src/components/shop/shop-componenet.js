@@ -1,5 +1,5 @@
 import './shop-styles.css';
-import { Card, Button, Container } from 'react-bootstrap';
+import { Card, Button, Container, Spinner } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { calculateTotal, toggleAmount } from '../../features/cart/cartSlice';
 
@@ -8,17 +8,21 @@ const Shop = () => {
     const {productsItems, isLoading, cartItems} = useSelector((state) => state.cart);
     const dispatch = useDispatch();
 
+
     console.log(productsItems);
     console.log(cartItems);
     const handleAddItem = (id) => {
         console.log('item added');
         dispatch(toggleAmount({id, increase: true}));
-        dispatch(calculateTotal());
     }
 
     if(isLoading || !productsItems) {
         return (
-            <div>Loading...</div>
+            <div className='spinner-container'>
+                <Spinner animation="border" role="status" variant='danger'>
+                    <span className="visually-hidden">Loading...</span>
+                </Spinner>
+            </div>
         )
     }
 

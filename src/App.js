@@ -14,17 +14,19 @@ import { Container } from "react-bootstrap";
 
 function App() {
 
-  const {cartItems} = useSelector((state) => state.cart);
+  const {cartItems, isLoading} = useSelector((state) => state.cart);
     const dispatch = useDispatch();
 
     
     useEffect(() => {
-      dispatch(getCartItems('cart/getCartItems'));
-    }, [])
+        dispatch(getCartItems('cart/getCartItems'));
+    }, [dispatch])
     
     useEffect(() => {
+      if(cartItems.length && !isLoading){
         dispatch(calculateTotal());
-    }, [cartItems, dispatch])
+      }
+    }, [cartItems, dispatch, isLoading])
 
 
 

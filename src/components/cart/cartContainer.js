@@ -3,18 +3,28 @@ import CartItem from "./cartItem";
 import { calculateTotal } from "../../features/cart/cartSlice";
 import { triggerPopup } from "../../features/modal/ModalSlice";
 import { useEffect } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Spinner } from "react-bootstrap";
 
 const CartContainer = () => {
 
 
-    const {cartItems, total, amount} = useSelector((state) => state.cart);
+    const {cartItems, total, amount, isLoading} = useSelector((state) => state.cart);
     const dispatch = useDispatch();
 
 
-    useEffect(() => {
-        dispatch(calculateTotal());
-    }, [cartItems, dispatch])
+    // useEffect(() => {
+    //     dispatch(calculateTotal());
+    // }, [dispatch, isLoading])
+
+    if(isLoading){
+        return (
+            <div className="spinner-container">
+                <Spinner animation="border" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </Spinner>
+            </div>
+        )
+    }
 
     const cartList = cartItems.map((item) => {
         if(item.amount < 1) {
