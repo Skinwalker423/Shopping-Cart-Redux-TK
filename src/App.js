@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { calculateTotal, getCartItems } from "./features/cart/cartSlice";
 import PopUpModal from "./components/modal/modal-component";
 import { Container } from "react-bootstrap";
+import CheckoutModal from "./components/modal/checkout-modal";
 
 
 
@@ -32,7 +33,8 @@ function App() {
 
   return (
     <Container>
-    <PopUpModal />
+      <CheckoutModal />
+      <PopUpModal />
       <Routes>
         <Route exact path="/" element={<NavBar />}>
             <Route index element={<Shop />} />

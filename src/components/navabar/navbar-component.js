@@ -1,10 +1,14 @@
 import {CartIcon, BadgeCheck} from '../../icons';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import {Outlet, Link} from 'react-router-dom';
+import { showCheckoutModal } from '../../features/modal/checkoutModalSlice';
+
 
 const NavBar = () => {
 
     const {amount} = useSelector((state) => state.cart);
+    const dispatch = useDispatch();
+
 
     return (
         <>
@@ -13,7 +17,10 @@ const NavBar = () => {
                 <Link className="nav-title" to={'/'}><h1>NavBar</h1></Link>
                 <BadgeCheck />
                 <div className='nav-container'>
-                    <Link to={'/checkout'}><CartIcon /></Link>
+                    <div onClick={() => {
+                        console.log('cart clicked');
+                        dispatch(showCheckoutModal());
+                    }}><CartIcon /></div>
                     <div className='amount-container'>
                         <p className='total-amount'>{amount}</p>
                     </div>

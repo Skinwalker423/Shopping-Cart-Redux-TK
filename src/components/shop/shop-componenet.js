@@ -42,6 +42,7 @@ const Shop = () => {
     })
 
     return (
+
         <Container className="shop-container">
              {productsList}       
         </Container>
