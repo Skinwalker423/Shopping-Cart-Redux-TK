@@ -1,16 +1,13 @@
 import './shop-styles.css';
 import { Card, Button, Container, Spinner } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { calculateTotal, toggleAmount } from '../../features/cart/cartSlice';
+import { toggleAmount } from '../../features/cart/cartSlice';
 
 const Shop = () => {
 
-    const {productsItems, isLoading, cartItems} = useSelector((state) => state.cart);
+    const {productsItems, isLoading} = useSelector((state) => state.cart);
     const dispatch = useDispatch();
 
-
-    console.log(productsItems);
-    console.log(cartItems);
     const handleAddItem = (id) => {
         console.log('item added');
         dispatch(toggleAmount({id, increase: true}));

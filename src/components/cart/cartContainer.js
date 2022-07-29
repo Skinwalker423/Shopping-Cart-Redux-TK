@@ -1,8 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import CartItem from "./cartItem";
-import { calculateTotal } from "../../features/cart/cartSlice";
 import { triggerPopup } from "../../features/modal/ModalSlice";
-import { useEffect } from "react";
 import { Button, Spinner } from "react-bootstrap";
 
 const CartContainer = () => {
